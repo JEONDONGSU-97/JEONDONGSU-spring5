@@ -1,0 +1,140 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E5C0FF62-5192-5654-678B-F52140A50C59" name="TBL_MEMBER">
+<createdBy>user</createdBy>
+<createdTime>2021-05-31 05:13:46 UTC</createdTime>
+<commentInRDBMS><![CDATA[회원관리테이블]]></commentInRDBMS>
+<ownerDesignName>SPRING5</ownerDesignName>
+<ordsAlias>table_11</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="USER_ID" id="0749645F-3FE9-DC2B-4EF7-0001D3A25CB0">
+<createdBy>user</createdBy>
+<createdTime>2021-05-31 05:15:37 UTC</createdTime>
+<commentInRDBMS><![CDATA[회원고유ID]]></commentInRDBMS>
+<ownerDesignName>SPRING5</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="USER_PW" id="829A8848-1218-7D73-9CA7-73D5D0DF3632">
+<createdBy>user</createdBy>
+<createdTime>2021-05-31 05:16:36 UTC</createdTime>
+<commentInRDBMS><![CDATA[회원로그인암호(스프링시큐리티)]]></commentInRDBMS>
+<ownerDesignName>SPRING5</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="USER_NAME" id="FD8B1690-86D2-751E-7323-E2DCEB9C545B">
+<createdBy>user</createdBy>
+<createdTime>2021-05-31 05:17:11 UTC</createdTime>
+<commentInRDBMS><![CDATA[회원이름]]></commentInRDBMS>
+<ownerDesignName>SPRING5</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EMAIL" id="532DAA17-C243-D6E6-DFC2-7535E9F5ED73">
+<createdBy>user</createdBy>
+<createdTime>2021-05-31 05:17:58 UTC</createdTime>
+<commentInRDBMS><![CDATA[회원이메일]]></commentInRDBMS>
+<ownerDesignName>SPRING5</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="POINT" id="CCE85831-D529-7648-C7D6-6E13E5FA9573">
+<createdBy>user</createdBy>
+<createdTime>2021-05-31 05:19:01 UTC</createdTime>
+<commentInRDBMS><![CDATA[회원포인트]]></commentInRDBMS>
+<ownerDesignName>SPRING5</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>11</dataTypePrecision>
+<ownDataTypeParameters>,11,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ENABLED" id="EC50BA94-ACBC-977F-2C91-B26A76DA4A84">
+<createdBy>user</createdBy>
+<createdTime>2021-05-31 05:19:53 UTC</createdTime>
+<commentInRDBMS><![CDATA[로그인승인여부]]></commentInRDBMS>
+<ownerDesignName>SPRING5</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="LEVELS" id="9FA93093-3F56-E483-06D4-C0E50970A881">
+<createdBy>user</createdBy>
+<createdTime>2021-05-31 05:28:08 UTC</createdTime>
+<commentInRDBMS><![CDATA[회원권한(ROLE_ADMIN,ROLE_USER)]]></commentInRDBMS>
+<ownerDesignName>SPRING5</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="REG_DATE" id="F3498241-E4EE-B60E-152E-6B0907539C80">
+<createdBy>user</createdBy>
+<createdTime>2021-05-31 05:29:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[등록일시]]></commentInRDBMS>
+<ownerDesignName>SPRING5</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="UPDATE_DATE" id="7637CB95-0C9E-964E-4A35-27B005E9FE88">
+<createdBy>user</createdBy>
+<createdTime>2021-05-31 05:29:46 UTC</createdTime>
+<commentInRDBMS><![CDATA[수정일시]]></commentInRDBMS>
+<ownerDesignName>SPRING5</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT015</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E93E391F-CFA6-540E-5D33-6B1B77859429" name="TBL_MEMBER_PK">
+<createdBy>user</createdBy>
+<createdTime>2021-05-31 05:15:37 UTC</createdTime>
+<ownerDesignName>SPRING5</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0749645F-3FE9-DC2B-4EF7-0001D3A25CB0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
