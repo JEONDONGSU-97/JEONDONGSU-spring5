@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
-	//스프링빈(클래스)에서는 로거로 디버그를 한다. = 로거객체를 만든다.
+	// 스프링빈(클래스)에서는 로거로 디버그를 한다. = 로거객체를 만든다.
 	// 로그중 slf4j(Spring Log For Java)
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class); 
 	

@@ -6,7 +6,16 @@
 - VS code에서 만든 UI를 이클립스에서 JSP로 변경 한 후 스프링웹프로젝트를 진행합니다.
 
 #### 20210602(수) 작업예정.
-- views/home/index.jsp 엑박처리 후 분해(header.jsp, footer.jsp, index.jsp)
+- Controller클래스 + home/index.jsp(화면) 한쌍 이다. 
+그래서, 컨트롤러클래스에서 만든 변수를 index.jsp에서 사용가능하게 됨.
+- 안드로이드앱 = 액티비티(java) + 레이아웃.xml(화면) 한쌍
+- C#닷넷 = test.aspx.cs(프로그램) + test.aspx(화면) 한쌍
+- 일반홈페이지(cafe24)-URL직접접근이 가능(보안위험이 높음)
+- MVC웹프로그램 차이점-URL직접접근이 가능X(보안위험이 낮음)-관공서,대학,은행 주로 사용
+- MVC프로젝트에도 직접접근이 가능한 resources폴더 직접접근이 가능-static 콘텐츠(html,css.js)를 모아 놓은 폴더.views폴더에 jsp는 직접접근이 불가능
+- Views폴더처럼 직접접근이 불가능한 컨텐츠는 Controller(라우터)로 접근하게 됨
+- views/home/index.jsp 엑박처리 후 분해는 관리자단 실습 후 작업예정.(header.jsp, footer.jsp, index.jsp)
+- 개발순서: ERD제작 -> html제작 -> jsp제작(현재:관리자단10기능 작업후 사용자단5기능)
 - admin 폴더 만든이후 분해 처리예정.
 - admin 부터 프로그램 작업 시작예정.
 - 4장 패키지와 예외처리 실습.
