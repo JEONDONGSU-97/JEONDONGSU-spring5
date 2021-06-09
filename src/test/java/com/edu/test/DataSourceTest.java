@@ -62,8 +62,8 @@ public class DataSourceTest {
 		pageVO.setPerPageNum(10);//UI하단사용 페이지 개수
 		pageVO.setQueryPerPageNum(10);//쿼리에서 페이지당 개수
 		pageVO.setTotalCount(memberService.countMember());//테스트하려고, 100명을 입력한다.
-		pageVO.setSearch_type("user_id");
-		pageVO.setSearch_keyword("admin");
+		pageVO.setSearch_type("user_id");//검색타입 all, user_id, user_name
+		pageVO.setSearch_keyword("admin");//검색어
 		//위 setTotalCount위치가 다른 설정보다 상단이면, 에러발생 왜냐하면, calcPage()가 실행되는데, 실행시 위 3가지 변수값이 지정 돼있어야지 계산메서드가 정상작동되기때문이다.
 		//위 토탈카운트변수값은 startPage, endPage계산에 필수이다.
 		//매퍼쿼리<-DAO클래스<-Service클래스J<-Unit(나중에 컨트롤러에서작업) 이제 역순으로 작업진행
