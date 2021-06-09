@@ -17,4 +17,5 @@ public interface IF_MemberDAO {
 	public List<MemberVO> selectMember(PageVO pageVO) throws Exception;
 	//회원의 전체 명수를 구한다(아래)
 	public int countMember() throws Exception;
+	public void insertMember(MemberVO memberVO) throws Exception;
 }
