@@ -9,7 +9,7 @@ SELECT TableB.* FROM
         OR user_name LIKE '%사용자8%'
         ORDER BY reg_date DESC
     ) TableA WHERE ROWNUM <= (0*5)+ 5
-) TableB WHERE TableB.RNUM > 0*5
+) TableB WHERE TableB.RNUM > 0*5  
 --페이징쿼리에서 필요한 변수는 2개
 --현재페이지수의 변수 a*b == page*b == queryStartNo
 --1페이지당 보여줄 개수의 변수 b == queryPerPageNum
