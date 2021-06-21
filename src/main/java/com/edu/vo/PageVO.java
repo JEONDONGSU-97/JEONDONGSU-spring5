@@ -1,7 +1,7 @@
 package com.edu.vo;
 /**
  * 이 클래스는 공통(회원관리,게시물관리)으로 사용하는 페이징처리+검색기능의 클래스.
- * @author 김일국
+ * @author 전동수
  * 이 클래스는 오라클이든, MySql(마리아DB) 어디서든 공통으로사용 Get/Set. 
  * 페이징에 사용되는 변수(쿼리변수+VO변수) 아래
  * queryStartNo, queryPerPageNum, page, perPageNum, startPage, endPage
@@ -41,8 +41,8 @@ public class PageVO {
 	public int getQueryStartNo() {
 		//this.page-1하는 이유는 jsp에서는 1,2,3...받지만,
 		//쿼리에서는 0,1,2...으로 사용되기 때문에. page*페이지당보여줄개수
-		//queryStartNo = (this.page-1)*queryPerPageNum;//쿼리에서 시작페이지의 인덱스 번호로 사용
-		queryStartNo = this.page-1;//오라클은 가능하지만, mysql에서는 쿼리를 수정해야 한다.
+		queryStartNo = (this.page-1)*queryPerPageNum;//쿼리에서 시작페이지의 인덱스 번호로 사용
+		//queryStartNo = this.page-1;//오라클은 가능하지만, mysql에서는 쿼리를 수정해야 한다.
 		return queryStartNo;
 	}
 	public void setQueryStartNo(int queryStartNo) {
