@@ -84,7 +84,7 @@
             </div>
             <input name="page" type="hidden" value="${pageVO.page}">
             <input name="search_type" type="hidden" value="${pageVO.search_type}">
-            <input name="search_keyword" type="hidden" value="${pageVO.search_keyword}">
+            <%-- <input name="search_keyword" type="hidden" value="${pageVO.search_keyword}"> --%>
           </form>
         </div>
         <!-- //콘텐츠 내용 -->
@@ -115,7 +115,7 @@ $(document).ready(function(){
 				}
 				if(result==1){//중복ID가 있다면 진행중지
 					$("#btn_insert").attr("disabled",true);//등록버튼 비활성화
-					alert("올바르지않거나,중복ID가 존재합니다. 다시 입력해 주세요!");
+					alert("올바르지 않거나,중복ID가 존재합니다. 다시 입력해 주세요!");
 				}
 			},
 			error:function(){

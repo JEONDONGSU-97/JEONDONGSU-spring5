@@ -35,7 +35,7 @@
           <!-- /.card-header -->
           <!-- form start -->
           <!-- 첨부파일을 전송할때 enctype=필수 없으면, 첨부파일이 전송X -->
-          <form id="form_view" name="form_view" action="/admin/member/member_update_form" enctype="multipart/form-data">
+          <form id="form_view" name="form_view" action="/admin/member/member_update_form" method="get" enctype="multipart/form-data">
             <div class="card-body">
               <div class="form-group">
                 <label for="exampleInputEmail1">사용자ID</label>
@@ -83,7 +83,7 @@
               URL쿼리 스트링(GET)으로 보내면 X, POST방식으로 보냅니다. -->
               <input type="hidden" name="page" value="${pageVO.page}">
               <input type="hidden" name="search_type" value="${pageVO.search_type}">
-              <input type="hidden" name="search_keyword" value="${pageVO.search_keyword}">
+              <%-- <input type="hidden" name="search_keyword" value="${pageVO.search_keyword}"> --%>
               <input type="hidden" name="user_id" value="${memberVO.user_id}">
             </div>
           </form>
@@ -101,14 +101,15 @@
 $(document).ready(function(){
 	$("#btn_delete").click(function(){
 		if(confirm("정말로 삭제하시겠습니까?")) {
-			//위 컨펌대화상자에서 '예'를 누르면 , 아래 부분이 실행 됨. '아니오'면 건너뜀
+			//위 컨펌대화상자에서 예,를 누르면, 아래 부분이 실행됨.(아니오, 건너띔)
 			$("#form_view").attr("action","/admin/member/member_delete");
 			$("#form_view").attr("method","post");
 			$("#form_view").submit();
 		}
 	});
 	$("#btn_list").click(function(){
-		var queryString = 'page=${pageVO.page}&$search_type=${pageVO.search_type}&$search_keyword=${pageVO.search_keyword}';
+		var queryString = 'page=${pageVO.page}&search_type=${pageVO.search_type}';
+		//alert(queryString);//디버그
 		location.replace('/admin/member/member_list?'+queryString);
 	});
 });

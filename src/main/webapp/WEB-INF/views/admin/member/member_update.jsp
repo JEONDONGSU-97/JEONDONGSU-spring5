@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ include file="../include/header.jsp" %>
 
-<!-- Content Wrapper. Contains page content -->
+  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -44,12 +44,12 @@
               </div>
               <div class="form-group">
                 <label for="user_pw">암호</label>
-                <!-- 암호는 기존값이 필요없음. 이유는 값이 있으면 업데이트 진행, 없으면 업데이트제외됨 -->
+                <!-- 암호는 기존값이 필요없음. 이유는 값이 있으면 업데이트진행, 없으면 업데이트제외됨 -->
                 <input value="" name="user_pw" type="password" class="form-control" id="user_pw" placeholder="암호를 입력해 주세요">
               </div>
               <div class="form-group">
                 <label for="user_name">사용자이름</label>
-                <input value="${memberVO.user_name}" name="user_name" id="user_name" type="text" class="form-control" placeholder="이름을 입력해주세요." required>
+                <input value="${memberVO.user_name}" name="user_name" type="text" id="user_name" class="form-control" placeholder="이름을 입력해주세요." required>
               </div>
               <div class="form-group">
                 <label for="email">이메일</label>
@@ -66,14 +66,13 @@
                   <option value="0" ${memberVO.enabled==false?'selected':''}>금지</option>
                 </select>
               </div>
-               <div class="form-group">
+              <div class="form-group">
                 <label for="levels">권한부여</label>
                 <select name="levels" id="levels" class="form-control">
                   <option value="ROLE_USER" ${memberVO.levels=='ROLE_USER'?'selected':''}>사용자</option>
                   <option value="ROLE_ADMIN" ${memberVO.levels=='ROLE_ADMIN'?'selected':''}>관리자</option>
                 </select>
               </div>
-              
             </div>
             <!-- /.card-body -->
 
@@ -84,8 +83,7 @@
             </div>
             <input name="page" type="hidden" value="${pageVO.page}">
             <input name="search_type" type="hidden" value="${pageVO.search_type}">
-            <input name="search_keyword" type="hidden" value="${pageVO.search_keyword}">
-            
+            <%-- <input name="search_keyword" type="hidden" value="${pageVO.search_keyword}"> --%>
           </form>
         </div>
         <!-- //콘텐츠 내용 -->
@@ -106,9 +104,13 @@ $(document).ready(function(){
 		form_update.submit();
 	});
 	$("#btn_list").click(function(){
+		/* 폼을 get방식을 전송시 암호와 같은 정보가 URL쿼리 스트링에 노출되어서 주석처리 
 		form_update.attr("action","/admin/member/member_list");
 		form_update.attr("method","get");
 		form_update.submit();
+		*/
+		var queryString = 'page=${pageVO.page}&search_type=${pageVO.search_type}';
+		location.replace('/admin/member/member_list?'+queryString);
 	});
 });
 </script>
