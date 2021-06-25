@@ -84,7 +84,6 @@ systimestamp
 </select>
 <!-- pageVO 받아서 처리하는  조회 쿼리 -->
 <select id="selectMember" resultType="com.edu.vo.MemberVO">
-
 SELECT TableB.* FROM
 (
     SELECT ROWNUM AS RNUM, TableA.* FROM
