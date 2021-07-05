@@ -27,7 +27,7 @@ import com.edu.vo.PageVO;
 /**
  * 이 클래스는 오라클과 연동해서 CRUD를 테스트하는 클래스 입니다.
  * 과장(이사,팀장) JUnit CRUD까지 만들어서 일반사원에게 공개 + 회원관리
- * @author 전동수
+ * @author 김일국
  *
  */
 //RunWith인터페이스 현재클래스가 Junit실행클래스라고 명시
@@ -158,7 +158,7 @@ public class DataSourceTest {
 	public void oldQueryTest() throws Exception {
 		//스프링빈을 사용하지 않을때 예전 방식: 코딩테스트에서는 스프링설정을 안쓰고, 직접 DB 아이디/암호 입력
 		Connection connection = null;
-		connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XE","XE2","apmsetup");
+		connection = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XE","XE","apmsetup");
 		logger.debug("데이터베이스 직접 접속이 성공 하였습니다. DB종류는 "+ connection.getMetaData().getDatabaseProductName());
 		//직접쿼리를 날립니다. 날리기전 쿼리문장 객체생성statement
 		Statement stmt = connection.createStatement();
