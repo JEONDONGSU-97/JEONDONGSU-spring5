@@ -27,6 +27,7 @@ import com.edu.vo.BoardVO;
 import com.edu.vo.MemberVO;
 import com.edu.vo.PageVO;
 
+
 /**
  * 이 클래스는 Admin관리자단을 접근하는 컨트롤러 클래스 <- 디스패처 서블렛(게이트웨이) 기능을 합니다.
  * 디스페처 서블렛 클래스는 톰캣이 실행(web.xml)될때 제일 먼저 실행되는 클래스, 그래서, 게이트웨이라고 합니다.
@@ -292,6 +293,8 @@ public class AdminController {
 			BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 			String encPassword = passwordEncoder.encode(rawPassword);
 			memberVO.setUser_pw(encPassword);
+			//스프링시큐리티 내장클래스에서 user_pw(admin1234)와 password(해시값)비교함수
+			//passwordEncoder.matches("admin1234", password);
 		}
 		memberService.updateMember(memberVO);//반환값이 없습니다.
 		//redirect로 페이지를 이동하면, model로 담아서 보낼수 없습니다. 쿼리스트링(URL?)으로 보냅니다.
