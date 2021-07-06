@@ -60,7 +60,7 @@ ul.page_menu li a {
     line-height: 35px;
     border: none;
     border-bottom: 1px solid #ccc;
-    background: url(../home/img/ico_search.png) no-repeat 10px 50%;
+    background: url(../img/ico_search.png) no-repeat 10px 50%;
     background-size: 15px;
 }
 .btn_srch {
@@ -313,7 +313,6 @@ input::placeholder { color: #999; } /* IE(Internet Explore)브라우저용 스�
 	border: 1px solid #ccc;
 	margin-left: 1px;
 }
-
 .app_content input {
 	border: none;
 	/* width: inherit; */
