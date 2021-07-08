@@ -21,6 +21,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,12 +30,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.edu.dao.IF_BoardDAO;
 import com.edu.service.IF_MemberService;
 import com.edu.vo.MemberVO;
 
 /**
  * 이 클래스는 이 프로젝트에서 공통으로 사용하는 유틸리티기능을 모아놓은 클래스. 
- * @author 전동수
+ * @author 김일국
  * 컨트롤러 기능 @Controller(jsp와 바인딩이 필요할때는 필수 애노테이션 입니다.)
  * 콤포턴트 @Component는 MVC가 아닌 기능들을 모아놓은 스프링빈 명시, 여기서는 jsp와 바인딩이 필요해서 사용않함 
  */
@@ -44,6 +46,8 @@ public class CommonUtil {
 	private Logger logger = LoggerFactory.getLogger(CommonUtil.class);
 	@Inject
 	private IF_MemberService memberService;//스프링빈을 주입받아서(DI) 객체준비
+	@Inject
+	private IF_BoardDAO boardDAO;
 	
 	//첨부파일 업로드/다운로드/삭제/인서트/수정에 모두 사용될 저장경로를 1개지정해서 [전역]으로사용
 	@Resource(name="uploadPath")
@@ -52,6 +56,23 @@ public class CommonUtil {
 		return uploadPath;
 	}
 
+	//첨부파일 개별삭제 Ajax로 받아서 처리, @ResponseBody사용
+	@RequestMapping(value="/file_delete", method=RequestMethod.POST)
+	@ResponseBody
+	public String file_delete(@RequestParam("save_file_name")String save_file_name) { //Ajax는 예외처리를 스프링에 던지지 않고, try~catch문으로 처리.
+		String result = "";//Ajax로 보내는 값변수
+		try {
+			boardDAO.deleteAttach(save_file_name);
+			File target = new File(uploadPath + "/" + save_file_name);
+			if(target.exists()) {
+				target.delete();
+			}
+			result = "success";
+		} catch (Exception e) {
+			result = "fail: " + e.toString();
+		}
+		return result;//Ajax에서 바로확인 가능
+	}
 	//다운로드 처리도 같은 페이지에서 결과값만 반환받는 @ResponseBody 사용
 	@RequestMapping(value="/download", method=RequestMethod.GET)
 	@ResponseBody
@@ -144,7 +165,7 @@ public class CommonUtil {
 		return checkImgArray;
 	}
 	
-	//RestAPI서버 맛보기ID중복체크(제대로 만들면 @RestController 사용)
+	//관리자단에서 사용:RestAPI서버 맛보기ID중복체크(제대로 만들면 @RestController 사용)
 	@RequestMapping(value="/id_check", method=RequestMethod.GET)
 	@ResponseBody //반환받은 값의 헤더값을 제외하고, 내용(body)만 반환하겠다는 명시
 	public String id_check(@RequestParam("user_id")String user_id) throws Exception {
@@ -158,6 +179,19 @@ public class CommonUtil {
 			}
 		}
 		return memberCnt;//0.jsp 이렇게 작동하지 않습니다. 이유는 @ResponseBody때문이고, RestAPI는 값만 반환
+	}
+	//사용자단에서 사용: JsonView방식으로 RestApi를 구현실습
+	@RequestMapping(value="/id_check_2010",method=RequestMethod.GET)
+	public String id_check_2010(@RequestParam("user_id")String user_id,Model model) throws Exception {
+		String memberCnt = "1";//중복ID가 있는것을 기본값으로 지정
+		if(!user_id.isEmpty()) {
+			MemberVO memberVO = memberService.readMember(user_id);
+			if(memberVO == null) {//중복ID가 없다면
+				memberCnt = "0";
+			}
+		}
+		model.addAttribute("memberCnt", memberCnt);//자바List,VO,String객체를 json객체로 반환함.
+		return "jsonView";//jsp파일명 대신에 servlet에서 정의한 스프링빈 ID명을 적으면, json객체로 결과를 반환합니다.
 	}
 
 	//파일 업로드 공통 메서드(Admin컨트롤러에서 사용 + Home컨트롤러에서도 사용)

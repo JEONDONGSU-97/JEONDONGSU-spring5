@@ -40,6 +40,10 @@
 if("${msg}" != "") {
 	alert("${msg} 가(이) 성공하였습니다.");
 }
+//공통으로 사용하는 에러메시지 변수:
+if("${msgError}" != "") {
+	alert("${msgError}");
+}
 </script>
 
 </head>
@@ -92,9 +96,9 @@ if("${msg}" != "") {
 					<li><a href="/home/board/board_list?board_type=notice&search_keyword=" class="openAll2">커뮤니티</a>
 				        <div class="gnb_depth gnb_depth2_2">
                             <ul class="submenu_list">
-                            <c:forEach var="boardTypeVO" items="${listBoardTypeVO}">
-                                <li><a href="/home/board/board_list?board_type=${boardTypeVO.board_type}&search_keyword=">${boardTypeVO.board_name}</a></li>
-                            </c:forEach>    
+                            	<c:forEach var="boardTypeVO" items="${listBoardTypeVO}">
+	                            	<li><a href="/home/board/board_list?board_type=${boardTypeVO.board_type}&search_keyword=">${boardTypeVO.board_name}</a></li>
+                            	</c:forEach>
                             </ul>
                         </div>
 					</li>
