@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ include file="../include/header.jsp" %>
 
@@ -9,17 +9,18 @@
     <!-- 메인상단위치표시영역 -->
     <%@ include file="./board_header.jsp" %>
     <!-- //메인상단위치표시영역 -->
+
     <!-- 메인본문영역 -->
     <div class="bodytext_area box_inner">			
         <ul class="bbsview_list">
             <li class="bbs_title">${boardVO.title}</li>
             <li class="bbs_date">작성일 : 
-            <span><fmt:formatDate pattern="yyyy-MM-dd hh:MM:ss" value="${boardVO.reg_date}"/> </span>
+            <span><fmt:formatDate pattern="yyyy-MM-dd hh:MM:ss" value="${boardVO.reg_date}"/></span>
             </li>
             <li class="bbs_hit">조회수 : <span>${boardVO.view_count}</span></li>
             <li class="bbs_content">
                 <div class="editer_content">
-                   ${boardVO.content}
+                    ${boardVO.content}
                 </div>
             </li>
             <li class="bbs_title" style="height:inherit">첨부파일:
@@ -30,7 +31,7 @@
             			<c:param name="real_file_name" value="${boardVO.real_file_names[idx]}"></c:param>
             		</c:url>
             		<!-- 위 처럼 c:url로 쿼리스트링을 처리하면 한글이 인코딩되어서 전송됨 -->
-            		 <a href="${url}">다운로드
+            		 <a href="${url}">다운로드 
             		 ${boardVO.real_file_names[idx]}
             		 </a>
             		 <br>
@@ -39,10 +40,10 @@
             		 <c:set var="extName" value="${fileNameArray[fn:length(fileNameArray)-1]}" />
             		 <c:choose>
             		 	<c:when test="${fn:containsIgnoreCase(checkImgArray,extName)}">
-            		 	<img alt="다운로드 이미지" style="width:100%;display:block;" src="/image_preview?save_file_name=${boardVO.save_file_names[idx]}">
+            		 	<img alt="다운로드 이미지" style="max-width:100%;display:block;" src="/image_preview?save_file_name=${boardVO.save_file_names[idx]}">
             		 	</c:when>
-            		 </c:choose>        		 	
-            	</c:if>
+            		 </c:choose>
+            	</c:if> 
             </c:forEach>
             </li>
         </ul>
@@ -59,18 +60,22 @@
         $(document).ready(function(){
         	var form = $("#hide_form");
         	$("#btn_delete").click(function(){
-        		if(confirm("정말로 삭제 하시겠습니까?")) {       			
+        		if(confirm("정말로 삭제 하시겠습니까?")) {
         			form.attr("action","/home/board/board_delete");
         			form.submit();
-        		}
+        		}        		
         	});
         	$("#btn_update").click(function(){
-        		alert("수정 준비중입니다.");
+        		//alert("수정 준비중입니다.");
+        		form.attr("action","/home/board/board_update_form");
+        		form.attr("method","get");
+        		form.submit();
         	});
         });
         </script>
     </div>
     <!-- //메인본문영역 -->
+
 	<!-- 댓글영역 -->
 	<div class="row">
 		<div class="col-md-12">
@@ -181,6 +186,7 @@
 		<!-- /.col -->
 	</div>
 	<!-- //댓글영역 -->
+
 </div>
 <!-- //메인콘텐츠영역 -->
 
